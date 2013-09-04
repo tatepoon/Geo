@@ -49,6 +49,10 @@ Features include:
 * All measurements are in S.I. units (metres, seconds, etc.), unless specified otherwise
 * The coordinate reference system kis assumed to be WGS-84
 
+### How to Build
+
+* Geo is a Portable Class Library project which requires Portable Library Tools 2 Visual Studio extension to be installed.
+
 #### License
 
 Geo is licensed under the terms of the GNU Lesser General Public License as published by the Free Software Foundation.

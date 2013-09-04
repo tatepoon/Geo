@@ -7,25 +7,30 @@ namespace Geo
 {
     public class Coordinate : SpatialObject, IPosition
     {
+        public static bool UseCannonicalForm = true;
+
         public Coordinate() : this(0, 0)
         {
         }
 
         public Coordinate(double latitude, double longitude)
         {
-            if (latitude > 90 || latitude < -90)
-                throw new ArgumentOutOfRangeException("latitude");
-
-            if (GeoContext.Current.LongitudeWrapping)
+            if (UseCannonicalForm)
             {
-                while (longitude > 180)
-                    longitude -= 360;
-                while (longitude < -180)
-                    longitude += 360;
-            }
+                if (latitude > 90 || latitude < -90)
+                    throw new ArgumentOutOfRangeException("latitude");
 
-            if (longitude > 180 || longitude < -180)
-                throw new ArgumentOutOfRangeException("longitude");
+                if (GeoContext.Current.LongitudeWrapping)
+                {
+                    while (longitude > 180)
+                        longitude -= 360;
+                    while (longitude < -180)
+                        longitude += 360;
+                }
+
+                if (longitude > 180 || longitude < -180)
+                    throw new ArgumentOutOfRangeException("longitude");
+            }
 
             Latitude = latitude;
             Longitude = longitude;
