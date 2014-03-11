@@ -7,7 +7,7 @@ namespace Geo
 {
     public class Coordinate : SpatialObject, IPosition
     {
-        public static bool UseCannonicalForm = true;
+        public static bool UseCanonicalForm = true;
 
         public Coordinate() : this(0, 0)
         {
@@ -15,7 +15,7 @@ namespace Geo
 
         public Coordinate(double latitude, double longitude)
         {
-            if (UseCannonicalForm)
+            if (UseCanonicalForm)
             {
                 if (latitude > 90 || latitude < -90)
                     throw new ArgumentOutOfRangeException("latitude");
